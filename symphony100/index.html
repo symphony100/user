@@ -279,9 +279,9 @@
         <div class="popup" id="popup">
             <div class="popup-content">
                 <h3>コード認証</h3>
-                <p>認証コードを入力してください</p>
+                <p>認証コードを半角数字で入力してください</p>
                 <div class="input-bar">
-                    <input type="tel" id="authCode" maxlength="6" placeholder="□□□□□□" oninput="checkCodeInput(event)" />
+                    <input type="tel" id="authCode" maxlength="6" placeholder="例）123456" oninput="checkCodeInput(event)" />
                 </div>
                 <button class="button" id="confirmBtn" disabled onclick="verifyCode()">確認</button>
                 <button class="cancel-button" onclick="closePopup()">キャンセル</button>
@@ -390,7 +390,7 @@
                 }
             } else if (enteredCode === correctCode2) {
                 // スタンプ自動押しコード
-                alert('スタンプが自動で押されました！');
+                alert('スタンプが押されました！');
                 autoStamp();
                 closePopup();
             } else {
