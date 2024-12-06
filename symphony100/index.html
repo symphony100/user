@@ -241,6 +241,7 @@
                 padding: 30px;
             }
         }
+
     </style>
 </head>
 <body>
@@ -280,7 +281,7 @@
                 <h3>コード認証</h3>
                 <p>認証コードを入力してください</p>
                 <div class="input-bar">
-                    <input type="tel" id="authCode" maxlength="6" placeholder="例）123456" oninput="checkCodeInput(event)" />
+                    <input type="tel" id="authCode" maxlength="6" placeholder="□□□□□□" oninput="checkCodeInput(event)" />
                 </div>
                 <button class="button" id="confirmBtn" disabled onclick="verifyCode()">確認</button>
                 <button class="cancel-button" onclick="closePopup()">キャンセル</button>
@@ -298,8 +299,10 @@
     <script>
         let isAuthenticated = false;
         let userCoupons = 2; // 初期クーポン数
-
-        const correctCode = "967833";
+        const correctCode1 = "933475"; // 無料券コード
+        const correctCode2 = "135322"; // スタンプ自動押しコード
+        const maxStamps = 10; // 最大スタンプ数
+        let usedCodes = []; // 使用したコードを記録する
 
         // ページがロードされたときに保存された状態を復元
         window.onload = function() {
@@ -329,6 +332,7 @@
             // クーポンセクションと認証状態をリセット
             isAuthenticated = false;
             userCoupons = 2;
+            usedCodes = []; // 使用したコードをリセット
             document.getElementById('couponSection').style.display = 'none';
             localStorage.removeItem("stampStatus");
             localStorage.setItem("userCoupons", userCoupons);
@@ -371,16 +375,27 @@
         function verifyCode() {
             const enteredCode = document.getElementById('authCode').value;
 
-            if (enteredCode === correctCode) {
-                alert('認証成功！スタンプを獲得しました。');
-                isAuthenticated = true;
-                document.querySelectorAll('.stamp-box').forEach(stamp => stamp.classList.add('stamped'));
-                updateCouponSection();
-                saveStampStatus();
+            if (enteredCode === correctCode1) {
+                if (!usedCodes.includes(enteredCode)) {
+                    // 無料券コード：スタンプなしでクーポン使用
+                    alert('無料券コードが認証されました！');
+                    isAuthenticated = true;
+                    userCoupons++; // クーポンを追加
+                    usedCodes.push(enteredCode); // コードを記録
+                    updateCouponSection();
+                    saveStampStatus();
+                    closePopup();
+                } else {
+                    alert('このコードはすでに使用されています。');
+                }
+            } else if (enteredCode === correctCode2) {
+                // スタンプ自動押しコード
+                alert('スタンプが自動で押されました！');
+                autoStamp();
+                closePopup();
             } else {
                 alert('認証コードが間違っています。');
             }
-            closePopup();
         }
 
         function updateCouponSection() {
@@ -400,6 +415,19 @@
             } else {
                 alert('クーポンはありません。');
             }
+        }
+
+        function autoStamp() {
+            // 何度でもスタンプを押せるように変更
+            for (let i = 1; i <= maxStamps; i++) {
+                const stampBox = document.getElementById(`stamp${i}`);
+                if (!stampBox.classList.contains('stamped')) {
+                    stampBox.classList.add('stamped');
+                    break; // 未押しのスタンプのうち1つだけ押す
+                }
+            }
+
+            saveStampStatus(); // スタンプの状態を保存
         }
 
         function saveStampStatus() {
