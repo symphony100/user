@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="icon" type="image/x-icon" href="https://static.wixstatic.com/media/669165_89484848ada942a39a0db93ecdd66446~mv2.png/v1/fill/w_280,h_280,al_c,lg_1,q_85,enc_auto/669165_89484848ada942a39a0db93ecdd66446~mv2.png"><link rel="sympony" sizes="180x180" href="https://static.wixstatic.com/media/669165_89484848ada942a39a0db93ecdd66446~mv2.png/v1/fill/w_280,h_280,al_c,lg_1,q_85,enc_auto/669165_89484848ada942a39a0db93ecdd66446~mv2.png">　
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マッサージスタンプラリー 利用規約</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #007bff;
+            margin-top: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .terms {
+            margin-top: 30px;
+        }
+        .terms p {
+            margin-bottom: 20px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+        .footer-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-decoration: none;
+            pointer-events: none; /* 初期状態ではクリック不可 */
+            opacity: 0.5; /* 初期状態では透明にして、クリックできないように */
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .agree-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .agree-container input {
+            margin-right: 10px;
+        }
+        .agree-container label {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>マッサージスタンプラリー 利用規約</h1>
+    
+    <div class="container">
+        <div class="terms">
+            <h2>第1条: 目的</h2>
+            <p>本サービスは、指定された場所でスタンプを収集し、一定数のスタンプを集めることでマッサージサービスを無料で提供することを目的としています。</p>
+            
+            <h2>第2条: 参加資格</h2>
+            <p>本サービスの参加資格は特定の健康状態により、マッサージの提供が制限される場合があります。</p>
+            
+            <h2>第3条: スタンプの収集</h2>
+            <p>スタンプは、指定された場所にて利用者が自分の手で収集することが必要です。オンラインでのスタンプ収集は認められていません。</p>
+            
+            <h2>第4条: スタンプの利用</h2>
+            <p>スタンプを全て収集した後、無料マッサージサービスを利用することができます。スタンプの不正な取得は禁止されています。</p>
+
+            <h2>第5条: 免責事項</h2>
+            <p>本サービスは、天災、事故、その他の予期しない出来事による影響を受けた場合、責任を負いません。利用者は自己の責任において本サービスを利用するものとします。</p>
+
+            <h2>第6条: 規約の変更</h2>
+            <p>本利用規約は、予告なく変更することがあります。規約変更後もサービスを利用した場合、新しい規約に同意したものとみなします。</p>
+
+            <h2>第7条: 利用停止措置</h2>
+            <p>利用者が規約に違反した場合、サービスの利用を停止する場合があります。</p>
+        </div>
+
+        <!-- 同意するチェックボックス -->
+        <div class="agree-container">
+            <input type="checkbox" id="agree-checkbox">
+            <label for="agree-checkbox">利用規約に同意する</label>
+        </div>
+
+        <!-- 元のサイトへのリンク -->
+        <a href="https://okamotoeita.github.io/user/symphony100/" class="back-button" id="back-button">スタンプラリーに参加する。</a>
+    </div>
+
+    <footer>
+        <p>symphony合同会社</p>
+    </footer>
+
+    <script>
+        const agreeCheckbox = document.getElementById('agree-checkbox');
+        const backButton = document.getElementById('back-button');
+
+        // チェックボックスの状態が変更されるたびに呼び出されるイベント
+        agreeCheckbox.addEventListener('change', function() {
+            if (agreeCheckbox.checked) {
+                // チェックされていればボタンを有効化
+                backButton.style.pointerEvents = 'auto';
+                backButton.style.opacity = '1';
+            } else {
+                // チェックされていなければボタンを無効化
+                backButton.style.pointerEvents = 'none';
+                backButton.style.opacity = '0.5';
+            }
+        });
+    </script>
+
+</body>
+</html>
